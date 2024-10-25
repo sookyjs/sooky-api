@@ -1,3 +1,3 @@
-# Marketplace Rest API
+# Sooky Rest API
 
 This is it!
