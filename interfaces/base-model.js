@@ -41,7 +41,13 @@ class BaseModel {
    * @return {Mongooose.Model} the mongoose model
    */
   createMongooseModel_() {
-    return mongoose.model(this.getModelName(), this.getSchema())
+    const modelName = this.getModelName();
+    if (mongoose.models[modelName]) {
+      // Retourne le modèle existant s'il a déjà été compilé
+      return mongoose.models[modelName];
+    }
+    // Crée et retourne le modèle seulement s'il n'existe pas
+    return mongoose.model(modelName, new mongoose.Schema(this.getSchema()));
   }
 
   /**
