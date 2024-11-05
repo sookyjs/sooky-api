@@ -3,13 +3,11 @@ import admin from "./routes/admin/index.js"
 import store from "./routes/store/index.js"
 import auth from "./routes/auth/index.js"
 
-// guaranteed to get dependencies
-export default () => {
-  const app = Router()
+const router = Router();
 
-  admin(app)
-  auth(app)
-  store(app)
+// Montez les routes sous les bons préfixes
+router.use("/admin", admin);
+router.use("/auth", auth); // Utilisation correcte du routeur auth
+router.use("/store", store);
 
-  return app
-}
+export default router;

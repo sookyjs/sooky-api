@@ -4,16 +4,16 @@ import SookyError from "../core-utils/errors.js"
 import BaseService from "../interfaces/base-service.js"
 
 /**
- * Provides layer to manipulate products.
+ * Provides layer to manipulate tools.
  * @implements BaseService
  */
-class ProductService extends BaseService {
-  /** @param { productModel: (ProductModel) } */
-  constructor({ productModel, eventBusService }) {
+class ToolService extends BaseService {
+  /** @param { toolModel: (ToolModel) } */
+  constructor({ toolModel, eventBusService }) {
     super()
 
-    /** @private @const {ProductModel} */
-    this.productModel_ = productModel
+    /** @private @const {ToolModel} */
+    this.toolModel_ = toolModel
 
     /** @private @const {EventBus} */
     this.eventBus_ = eventBusService
@@ -24,8 +24,8 @@ class ProductService extends BaseService {
    * @return {Promise} the result of the find operation
    */
   list(selector) {
-    return this.productModel_.find(selector)
+    return this.toolModel_.find(selector)
   }
 }
 
-export default ProductService
+export default ToolService

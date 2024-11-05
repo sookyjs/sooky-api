@@ -1,12 +1,10 @@
-import { Router } from "express"
-import jobRoutes from "./products/index.js"
+import { Router } from 'express';
+import socialShareRoutes from './tools/socialShareRoutes.js';
+import listToolsRoutes from './tools/list-tools.js';
 
-const route = Router()
+const router = Router();
 
-export default app => {
-  app.use("/store", route)
+router.use('/tools', socialShareRoutes);
+router.use('/tools', listToolsRoutes);
 
-  jobRoutes(route)
-
-  return app
-}
+export default router;

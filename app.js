@@ -7,6 +7,9 @@ const PORT = process.env.PORT || 9000
 const startServer = async () => {
   const app = express()
 
+  // Middleware pour parser le JSON
+  app.use(express.json());
+
   await loaders({ expressApp: app })
 
   app.listen(PORT, err => {
