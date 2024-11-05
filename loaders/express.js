@@ -7,18 +7,18 @@ import morgan from "morgan"
 
 import config from "../config/index.js"
 
-export default async ({ app }) => {
-  app.enable("trust proxy")
+export default async ({ expressApp }) => {
+  expressApp.enable("trust proxy")
 
-  app.use(cors())
-  app.use(
+  expressApp.use(cors())
+  expressApp.use(
     morgan("combined", {
       skip: () => process.env.NODE_ENV === "test",
     })
   )
-  app.use(cookieParser())
-  app.use(bodyParser.json())
-  app.use(
+  expressApp.use(cookieParser())
+  expressApp.use(bodyParser.json())
+  expressApp.use(
     session({
       cookieName: "session",
       secret: config.cookieSecret,
@@ -31,9 +31,9 @@ export default async ({ app }) => {
     })
   )
 
-  app.get("/health", (req, res) => {
+  expressApp.get("/health", (req, res) => {
     res.status(200).send("OK")
   })
 
-  return app
+  return expressApp;
 }

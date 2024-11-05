@@ -37,7 +37,7 @@ export default async ({ expressApp }) => {
     await mongooseLoader()
     Logger.info("MongoDB Intialized")
   
-    await expressLoader({ app: expressApp })
+    await expressLoader({ expressApp })
     Logger.info("Express Intialized")
   
     // Add the registered services to the request scope
@@ -46,7 +46,7 @@ export default async ({ expressApp }) => {
       next()
     })
   
-    await apiLoader({ app: expressApp })
+    await apiLoader({ expressApp })
     Logger.info("API initialized")
 
   }
