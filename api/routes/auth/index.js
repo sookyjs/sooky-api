@@ -1,14 +1,11 @@
-import { Router } from "express"
-import registerUser from "./sign-up.js"
-import loginUser from "./sign-in.js"
+import { Router } from "express";
+import registerUser from "./sign-up.js";
+import loginUser from "./sign-in.js";
 
-const route = Router()
+const router = Router();
 
-export default app => {
-  app.use("/auth", route)
+// Définition des routes
+router.post("/sign-in", loginUser);
+router.post("/sign-up", registerUser);
 
-  route.post("/sign-in", loginUser)
-  route.post("/sign-up", registerUser)
-
-  return app
-}
+export default router;
