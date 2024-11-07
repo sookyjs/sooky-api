@@ -4,7 +4,7 @@ import authentication from '../../../middlewares/authentication.js';
 
 const router = express.Router();
 
-// Définissez les fonctions de gestion de route
+// POST - Créer un nouveau lien de partage SocialShare
 const createShareLink = async (req, res) => {
   try {
     const newShareLink = await SocialShareService.createShareLink(req.body);
@@ -14,6 +14,7 @@ const createShareLink = async (req, res) => {
   }
 };
 
+// GET - Récupérer un lien de partage SocialShare par ID
 const getShareLinkById = async (req, res) => {
   try {
     const shareLink = await SocialShareService.getShareLink(req.params.id);
@@ -24,6 +25,18 @@ const getShareLinkById = async (req, res) => {
   }
 };
 
+// PATCH - Mettre à jour un lien de partage SocialShare par ID
+const updateShareLink = async (req, res) => {
+  try {
+    const updatedShareLink = await SocialShareService.updateShareLink(req.params.id, req.body);
+    if (!updatedShareLink) return res.status(404).json({ message: 'Lien non trouvé' });
+    res.json({ message: 'Lien modifié', updatedShareLink });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// DELETE - Supprimer un lien de partage SocialShare par ID
 const deleteShareLinkById = async (req, res) => {
   try {
     const shareLink = await SocialShareService.deleteShareLink(req.params.id);
@@ -47,7 +60,8 @@ const getAllShareLinks = async (req, res) => {
 // Appliquez le middleware d'authentification et les fonctions nommées
 router.post('/social/share-link', authentication, createShareLink);
 router.get('/social/share-link/:id', authentication, getShareLinkById);
+router.patch('/social/share-link/:id', authentication, updateShareLink);
 router.delete('/social/share-link/:id', authentication, deleteShareLinkById);
-router.get('/social/share-links', authentication, getAllShareLinks); // Route pour récupérer tous les liens
+router.get('/social/share-links', authentication, getAllShareLinks);
 
 export default router;
