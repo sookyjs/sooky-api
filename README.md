@@ -86,7 +86,23 @@ Si la création réussit, notez le `token` retourné dans la réponse. Ce token 
 - **En-têtes** :
   - `Authorization`: `Bearer <votre_token>`
 
-### 4. Supprimer un Lien de Partage par ID (DELETE SHARE-LINK)
+### 4. Mettre à Jour un Lien de Partage par ID (UPDATE SHARE-LINK)
+
+- **Méthode** : PATCH
+- **URL** : `http://localhost:9000/api/v1/store/tools/social/share-link/:id`
+  - Remplacez `:id` par l'ID du lien de partage que vous souhaitez mettre à jour.
+- **En-têtes** :
+  - `Authorization`: `Bearer <votre_token>`
+- **Corps de la requête** (JSON) :
+  ```json
+  {
+    "url": "https://example.com/product/123",
+    "platform": "facebook",
+    "message": "Découvrez notre nouveau produit !"
+  }
+  ```
+
+### 5. Supprimer un Lien de Partage par ID (DELETE SHARE-LINK)
 
 - **Méthode** : DELETE
 - **URL** : `http://localhost:9000/api/v1/store/tools/social/share-link/:id`
@@ -94,7 +110,7 @@ Si la création réussit, notez le `token` retourné dans la réponse. Ce token 
 - **En-têtes** :
   - `Authorization`: `Bearer <votre_token>`
 
-### 5. Récupérer Tous les Liens de Partage (GET ALL SHARE-LINK)
+### 6. Récupérer Tous les Liens de Partage (GET ALL SHARE-LINK)
 
 - **Méthode** : GET
 - **URL** : `http://localhost:9000/api/v1/store/tools/social/share-links`
@@ -103,13 +119,14 @@ Si la création réussit, notez le `token` retourné dans la réponse. Ce token 
 
 ## Résumé des Routes
 
-| Méthode | URL                                      | Description                                  |
-|---------|------------------------------------------|----------------------------------------------|
-| POST    | `/api/v1/auth/sign-up`                   | Créer un utilisateur                         |
-| POST    | `/api/v1/store/tools/social/share-link`  | Créer un lien de partage                     |
-| GET     | `/api/v1/store/tools/social/share-link/:id` | Récupérer un lien de partage par ID          |
-| DELETE  | `/api/v1/store/tools/social/share-link/:id` | Supprimer un lien de partage par ID          |
-| GET     | `/api/v1/store/tools/social/share-links` | Récupérer tous les liens de partage SocialShare |
+| Méthode | URL                                         | Description                                     |
+|---------|---------------------------------------------|-------------------------------------------------|
+| POST    | `/api/v1/auth/sign-up`                      | Créer un utilisateur                            |
+| POST    | `/api/v1/store/tools/social/share-link`     | Créer un lien de partage                        |
+| GET     | `/api/v1/store/tools/social/share-link/:id` | Récupérer un lien de partage par ID             |
+| PATCH   | `/api/v1/store/tools/social/share-link/:id` | Mettre à jour un lien de partage par ID         |
+| DELETE  | `/api/v1/store/tools/social/share-link/:id` | Supprimer un lien de partage par ID             |
+| GET     | `/api/v1/store/tools/social/share-links`    | Récupérer tous les liens de partage SocialShare |
 
 ## Notes
 
