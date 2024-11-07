@@ -15,6 +15,10 @@ class SocialShareService {
     return await this.socialShare.findOne({ _id: id });
   }
 
+  async updateShareLink(id, data) {
+    return await this.socialShare.findByIdAndUpdate(id, data, { new: true });
+  }
+
   async deleteShareLink(id) {
     return await this.socialShare.deleteOne({ _id: id });
   }

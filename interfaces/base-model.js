@@ -94,6 +94,17 @@ class BaseModel {
   }
 
   /**
+   * Update a model via the mongoose model's findByIdAndUpdate.
+   * @param id {string} the id of the document to update
+   * @param update {object} mongoose update object
+   * @param options {?object=} mongoose options
+   * @return {object} mongoose result
+   */
+  findByIdAndUpdate(id, update, options) { 
+    return this.mongooseModel_.findByIdAndUpdate(id, update, options);
+  }
+
+  /**
    * Creates a document in the mongoose model's collection via create.
    * @param object {object} the value of the document to be created
    * @param options {?object=} mongoose options
