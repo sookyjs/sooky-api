@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "list:routes": "node --import tsx listRoutes.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,6 +45,7 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
+    "nodemon": "^3.1.7",
     "tsx": "^4.19.2"
   }
 }
